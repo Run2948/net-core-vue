@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29503.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCoreVue", "NetCoreVue.csproj", "{7B8CD161-D5FB-433A-94EC-A19E19B33339}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B8CD161-D5FB-433A-94EC-A19E19B33339}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B8CD161-D5FB-433A-94EC-A19E19B33339}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B8CD161-D5FB-433A-94EC-A19E19B33339}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B8CD161-D5FB-433A-94EC-A19E19B33339}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6D1F866F-B76C-46D6-95F9-29D0FB768B15}
+	EndGlobalSection
+EndGlobal
