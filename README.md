@@ -16,11 +16,11 @@ The Microsoft's dev team only has a finite capacity for handling third-party con
 
 ### 1. Create a new project with react template
 
-* You can use Visual Studio to create a project with React.js.
+* You can use Visual Studio to create a project with React.js:
 
 ![](README.assets/step1.1.jpg)
 
-* Or execute `dotnet new react` command in Command Line Tools.
+* Or execute `dotnet new react` command in Command Line Tools:
 
 ![](README.assets/step1.2.jpg)
 
@@ -84,11 +84,11 @@ The Microsoft's dev team only has a finite capacity for handling third-party con
 
 * Add `VueCliMiddleware` package from nuget: 
 
-> Execute `dotnet add package VueCliMiddleware` in the Package Manager Console.
+> Run `dotnet add package VueCliMiddleware` command in the Package Manager Console.
 
 ![](README.assets/step3.3.jpg)
 
-* Change `ReactDevelopmentServer` to `VueCli`
+* Change `ReactDevelopmentServer` to `VueCli`:
 
 ```csharp
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -108,7 +108,7 @@ The Microsoft's dev team only has a finite capacity for handling third-party con
     }
 ```
 
-* Change React build floder '`build`' to  Vue build folder '`dist`'
+* Change React build floder '`build`' to  Vue build folder '`dist`':
 
 > Startup.cs
 
@@ -141,6 +141,97 @@ The Microsoft's dev team only has a finite capacity for handling third-party con
 
 * Run to test
 
-> Execute `dotnet run` in Command Line Tools.
+> Run `dotnet run` in Command Line Tools to run the app.
 
 ![](README.assets/step3.4.jpg)
+
+### 3. Case will be in the end
+
+* Install `axios` plugin:
+
+> Run `vue add axios` command in Command Line Tools to install axios.
+
+![](README.assets/step4.1.jpg)
+
+* Run `vue add router` command in Command Line Tools to install vue-router.
+
+![](README.assets/step4.2.jpg)
+
+* add `WeatherForecast.vue` in views folder:
+
+```html
+<template>
+    <div class="weather">
+        <table className='table table-striped' aria-labelledby="tabelLabel">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Temp. (C)</th>
+                    <th>Temp. (F)</th>
+                    <th>Summary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(forecast,index) in forecasts" :key="forecast.date">
+                    <td>{{forecast.date}}</td>
+                    <td>{{forecast.temperatureC}}</td>
+                    <td>{{forecast.temperatureF}}</td>
+                    <td>{{forecast.summary}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: 'WeatherForecast',
+        data() {
+            return {
+                forecasts:[]
+            };
+        },
+        created() {
+            this.axios.get("/weatherforecast").then(res => {
+                // console.log(res.data);
+                this.forecasts = res.data;
+            });
+        }
+    }
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+
+    body{
+        text-align:center;
+    }
+
+    .weather {
+        margin: 0 auto;
+    }
+</style>
+```
+
+* Add a new router:
+
+```javascript
+export default new Router({
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes: [
+    ...
+    {
+        path: '/weather',
+        name: 'weather',
+        component: () => import('./views/WeatherForecast.vue')
+    }
+  ]
+})
+```
+
+* Run to view the last result:
+
+![](README.assets/step5.jpg)
+
+### Enjoy it!
